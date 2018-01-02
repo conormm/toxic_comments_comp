@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1514888223386.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4180605929",
+    "id" : "FA104BA3",
+    "lastKnownWriteTime" : 1514888609,
+    "last_content_update" : 1514888609,
+    "path" : "~/Desktop/toxic_comments_comp/explore_columns_1.R",
+    "project_path" : "explore_columns_1.R",
+    "properties" : {
+        "cursorPosition" : "18,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
