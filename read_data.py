@@ -4,9 +4,10 @@ import os
 import re, string
 import begin
 
-def init_data_setup(df, labels):
+def init_data_setup(df, labels, train=True):
 
-    df["no_label"] = 1-df[labels].max(axis=1)
+    if train:
+        df["no_label"] = 1-df[labels].max(axis=1)
     df["comment_text"] = df.comment_text.str.replace("\n", " ")
     df.comment_text.fillna("unknown", inplace=True)
 
@@ -28,26 +29,7 @@ test = pd.read_csv("data/test.csv")
 targets = train.columns[2:8]
 
 train = init_data_setup(train, labels=targets)
-test = init_data_setup(test, labels=targets)
+test = init_data_setup(test, labels=targets, train=False)
+print("done")
 
-
-@begin.start
-def main():
-
-    folder = os.path.dirname(os.path.realpath(__file__))
-    os.chdir(folder)
-    print("I am in {} folder".format(folder))
-
-    train = pd.read_csv("data/train.csv")
-    test = pd.read_csv("data/test.csv")
-
-    targets = train.columns[2:8]
-    print(targets)
-
-    train = init_data_setup(train, labels=targets)
-    test = init_data_setup(test)
-
-    train.to_csv("train_mod1.csv", index=False)
-    print("train saved")
-
-
+os.listdir()
