@@ -21,15 +21,23 @@ def mk_comment_stats(comment_col):
     d["n_words"] = comment_col.str.split(" ").apply(lambda x: sum(1 for _ in x))
     d["n_qm"] = comment_col.str.count("'?'")
     d["n_exl"] = comment_col.str.count("'!")
+    d["prop_caps"] = comment_col.str.count("[A-Z]") / samp.str.len()
     return d
 
-train = pd.read_csv("data/train.csv")
-test = pd.read_csv("data/test.csv")
+if __name__ == '__main__':
+    def main():
 
-targets = train.columns[2:8]
+        train = pd.read_csv("data/raw/train.csv")
+        test = pd.read_csv("data/raw/test.csv")
 
-train = init_data_setup(train, labels=targets)
-test = init_data_setup(test, labels=targets, train=False)
-print("done")
+        #%cd data/sample
+        #%pwd
+        train.sample(500).to_csv("sample_data.csv", index=False)
 
-os.listdir()
+        targets = train.columns[2:8]
+
+        train = init_data_setup(train, labels=targets)
+        test = init_data_setup(test, labels=targets, train=False)
+        print("done")
+
+
